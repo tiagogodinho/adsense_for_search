@@ -1,0 +1,4 @@
+= Google AdSense for Search
+
+A simple gem to use "Google AdSense for Search"
+
