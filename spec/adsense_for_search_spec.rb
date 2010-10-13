@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/spec_helper'
 
-require "ad_sense_for_search"
+require "adsense_for_search"
 
 describe AdSenseForSearch do
   before :each do
