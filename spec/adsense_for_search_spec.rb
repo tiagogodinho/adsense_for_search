@@ -48,5 +48,23 @@ describe AdSenseForSearch do
 </script>
       javascript
   end
+  
+  it 'should respond to "title" helper' do
+    @view.adsense_for_search('imobiliária são paulo', :adblock1 => {:number => 7}).should ==
+      <<-javascript
+<script type="text/javascript" charset="utf­8">
+  var pageOptions = {"pubId":"pub","query":"imobiliária são paulo"};
+
+  var adblock1 = {"container":"adblock1","number":7,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
+
+  new google.ads.search.Ads(pageOptions, adblock1);
+</script>
+      javascript
+  end
 end
 
+describe Hash do
+  it '' do
+    {:city => 'São Paulo', :state => 'SP'}.to_json2.should == '{"city":"São Paulo","state":"SP"}'
+  end
+end

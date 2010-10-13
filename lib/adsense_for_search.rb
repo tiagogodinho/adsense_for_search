@@ -7,3 +7,18 @@ end
 
 ActionView::Base.send :include, AdSenseForSearch::ViewHelper
 
+class Hash
+  def to_json2
+    result = []
+    
+    each do |key, value|
+      string = "\"#{key}\":"
+      string << ((value.class.to_s == "String") ? "\"#{value}\"" : "#{value}")
+      
+      result << string
+    end
+    
+    "{#{result.join(',')}}"
+  end
+end
+

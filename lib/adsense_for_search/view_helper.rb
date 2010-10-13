@@ -37,9 +37,9 @@ module AdSenseForSearch
       adblock2.merge! options.last[:adblock2] if options.last.has_key? :adblock2
 
       js = ""
-      js << "var pageOptions = #{pageOptions.to_json};\n"
-      js << "\n  var adblock1 = #{adblock1.to_json};\n" if options.last.has_key? :adblock1
-      js << "\n  var adblock2 = #{adblock2.to_json};\n" if options.last.has_key? :adblock2
+      js << "var pageOptions = #{pageOptions.to_json2};\n"
+      js << "\n  var adblock1 = #{adblock1.to_json2};\n" if options.last.has_key? :adblock1
+      js << "\n  var adblock2 = #{adblock2.to_json2};\n" if options.last.has_key? :adblock2
       js << "\n  new google.ads.search.Ads(pageOptions#{ ', adblock1' if options.last.has_key? :adblock1 }#{ ', adblock2' if options.last.has_key? :adblock2 });"
 
       <<-javascript
