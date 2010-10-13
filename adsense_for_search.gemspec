@@ -3,6 +3,7 @@ Gem::Specification.new do |s|
   s.version     = '0.1.1'
   s.description = 'A simple gem to use "Google AdSense for Search"'
   s.author      = 'Tiago Rafael Godinho'
+  s.email       = 'tiagogodinho3@gmail.com'
   s.files       = Dir['MIT-LICENSE', 'README.rdoc', 'lib/**/*']
   s.summary     = ''
 
