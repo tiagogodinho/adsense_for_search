@@ -11,6 +11,7 @@ module AdSenseForSearch
       }
       
       pageOptions.merge!(:channel => AdSenseForSearch.channel) if AdSenseForSearch.channel
+      pageOptions.merge!(:adtest => 'on') unless Rails.env == 'production' || RAILS_ENV == 'production'
       
       pageOptions.merge! options.last[:options] if options.last.has_key? :options
 

@@ -3,6 +3,7 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 require "adsense_for_search"
+require 'rails'
 
 describe AdSenseForSearch do
   before :each do
@@ -28,7 +29,7 @@ describe AdSenseForSearch do
     @view.adsense_for_search('emprego sorocaba', :adblock1 => {:number => 7}).should ==
       <<-javascript
 <script type="text/javascript" charset="utf­8">
-  var pageOptions = {"pubId":"pub-123456789","query":"emprego sorocaba","channel":"123456789"};
+  var pageOptions = {"pubId":"pub-123456789","query":"emprego sorocaba","channel":"123456789","adtest":"on"};
 
   var adblock1 = {"container":"adblock1","number":7,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
 
@@ -41,7 +42,7 @@ describe AdSenseForSearch do
     @view.adsense_for_search('emprego sorocaba', :adblock1 => {:number => 5}, :adblock2 => {:number => 8}).should ==
       <<-javascript
 <script type="text/javascript" charset="utf­8">
-  var pageOptions = {"pubId":"pub-123456789","query":"emprego sorocaba","channel":"123456789"};
+  var pageOptions = {"pubId":"pub-123456789","query":"emprego sorocaba","channel":"123456789","adtest":"on"};
 
   var adblock1 = {"container":"adblock1","number":5,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
 
@@ -56,7 +57,7 @@ describe AdSenseForSearch do
     @view.adsense_for_search('imobiliária são paulo', :adblock1 => {:number => 7}).should ==
       <<-javascript
 <script type="text/javascript" charset="utf­8">
-  var pageOptions = {"pubId":"pub-123456789","query":"imobiliária são paulo","channel":"123456789"};
+  var pageOptions = {"pubId":"pub-123456789","query":"imobiliária são paulo","channel":"123456789","adtest":"on"};
 
   var adblock1 = {"container":"adblock1","number":7,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
 
@@ -69,7 +70,37 @@ describe AdSenseForSearch do
     @view.adsense_for_search('imobiliária são paulo', :adblock1 => {:number => 7}, :options => {:pubId => 'pub-987654321', :channel => '987654321'}).should ==
       <<-javascript
 <script type="text/javascript" charset="utf­8">
-  var pageOptions = {"pubId":"pub-987654321","query":"imobiliária são paulo","channel":"987654321"};
+  var pageOptions = {"pubId":"pub-987654321","query":"imobiliária são paulo","channel":"987654321","adtest":"on"};
+
+  var adblock1 = {"container":"adblock1","number":7,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
+
+  new google.ads.search.Ads(pageOptions, adblock1);
+</script>
+      javascript
+  end
+  
+  it 'test environment' do
+    Rails.stub!(:env).and_return('production')
+    
+    @view.adsense_for_search('emprego sorocaba', :adblock1 => {:number => 7}).should ==
+      <<-javascript
+<script type="text/javascript" charset="utf­8">
+  var pageOptions = {"pubId":"pub-123456789","query":"emprego sorocaba","channel":"123456789"};
+
+  var adblock1 = {"container":"adblock1","number":7,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
+
+  new google.ads.search.Ads(pageOptions, adblock1);
+</script>
+      javascript
+  end
+  
+  it 'test environment' do
+    RAILS_ENV = 'production'
+    
+    @view.adsense_for_search('emprego sorocaba', :adblock1 => {:number => 7}).should ==
+      <<-javascript
+<script type="text/javascript" charset="utf­8">
+  var pageOptions = {"pubId":"pub-123456789","query":"emprego sorocaba","channel":"123456789"};
 
   var adblock1 = {"container":"adblock1","number":7,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
 
