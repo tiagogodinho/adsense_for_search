@@ -3,6 +3,10 @@ require 'adsense_for_search'
 
 module AdSenseForSearch
   autoload :ViewHelper, 'adsense_for_search/view_helper'
+  
+  class << self
+    attr_accessor :pubId, :channel
+  end
 end
 
 ActionView::Base.send :include, AdSenseForSearch::ViewHelper

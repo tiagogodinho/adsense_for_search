@@ -6,9 +6,13 @@ module AdSenseForSearch
       raise ArgumentError, "AdSense for search needs a query string" unless options.first
 
       pageOptions = {
-        :pubId => 'pub',
+        :pubId => AdSenseForSearch.pubId,
         :query => options.first
       }
+      
+      pageOptions.merge!(:channel => AdSenseForSearch.channel) if AdSenseForSearch.channel
+      
+      pageOptions.merge! options.last[:options] if options.last.has_key? :options
 
       adblock1 = {
         :container => 'adblock1',
