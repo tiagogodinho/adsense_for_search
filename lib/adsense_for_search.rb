@@ -25,4 +25,3 @@ class Hash
     "{#{result.join(',')}}"
   end
 end
-
