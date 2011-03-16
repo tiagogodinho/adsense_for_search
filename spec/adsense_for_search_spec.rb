@@ -79,6 +79,19 @@ describe AdSenseForSearch do
       javascript
   end
   
+  it '' do
+    @view.adsense_for_search('imobiliária são paulo', :adblock1 => {:number => 7}, :options => {:pubId => 'pub-987654321', :channel => '987654321', :linkTarget => '_blank'}).should ==
+      <<-javascript
+<script type="text/javascript" charset="utf­8">
+  var pageOptions = {"pubId":"pub-987654321","query":"imobiliária são paulo","channel":"987654321","adtest":"on","linkTarget":"_blank"};
+
+  var adblock1 = {"container":"adblock1","number":7,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
+
+  new google.ads.search.Ads(pageOptions, adblock1);
+</script>
+      javascript
+  end
+  
   it 'test environment' do
     Rails.stub!(:env).and_return('production')
     
