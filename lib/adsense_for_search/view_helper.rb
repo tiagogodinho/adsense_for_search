@@ -40,12 +40,26 @@ module AdSenseForSearch
       }
 
       adblock2.merge! options.last[:adblock2] if options.last.has_key? :adblock2
+      
+      adblock3 = {
+        :container => 'adblock3',
+        :number => 3,
+        :width => 'auto',
+        :lines => 2,
+        :fontFamily => 'arial',
+        :fontSizeTitle => '14px',
+        :fontSizeDescription => '14px',
+        :fontSizeDomainLink => '14px'
+      }
+
+      adblock3.merge! options.last[:adblock3] if options.last.has_key? :adblock3
 
       js = ""
       js << "var pageOptions = #{pageOptions.to_json2};\n"
       js << "\n  var adblock1 = #{adblock1.to_json2};\n" if options.last.has_key? :adblock1
       js << "\n  var adblock2 = #{adblock2.to_json2};\n" if options.last.has_key? :adblock2
-      js << "\n  new google.ads.search.Ads(pageOptions#{ ', adblock1' if options.last.has_key? :adblock1 }#{ ', adblock2' if options.last.has_key? :adblock2 });"
+      js << "\n  var adblock3 = #{adblock3.to_json2};\n" if options.last.has_key? :adblock3
+      js << "\n  new google.ads.search.Ads(pageOptions#{ ', adblock1' if options.last.has_key? :adblock1 }#{ ', adblock2' if options.last.has_key? :adblock2 }#{ ', adblock3' if options.last.has_key? :adblock3 });"
 
       <<-javascript
 <script type="text/javascript" charset="utf­8">

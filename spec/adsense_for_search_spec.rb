@@ -92,6 +92,23 @@ describe AdSenseForSearch do
       javascript
   end
   
+  it 'should respond to "title" helper' do
+    @view.adsense_for_search('emprego sorocaba', :adblock1 => {:number => 5}, :adblock2 => {:number => 8}, :adblock3 => {:number => 3}).should ==
+      <<-javascript
+<script type="text/javascript" charset="utf­8">
+  var pageOptions = {"pubId":"pub-123456789","query":"emprego sorocaba","channel":"123456789","adtest":"on"};
+
+  var adblock1 = {"container":"adblock1","number":5,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
+
+  var adblock2 = {"container":"adblock2","number":8,"width":"250px","lines":3,"fontFamily":"arial","fontSizeTitle":"12px","fontSizeDescription":"12px","fontSizeDomainLink":"12px"};
+
+  var adblock3 = {"container":"adblock3","number":3,"width":"auto","lines":2,"fontFamily":"arial","fontSizeTitle":"14px","fontSizeDescription":"14px","fontSizeDomainLink":"14px"};
+
+  new google.ads.search.Ads(pageOptions, adblock1, adblock2, adblock3);
+</script>
+      javascript
+  end
+  
   it 'test environment' do
     Rails.stub!(:env).and_return('production')
     
