@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    adsense_for_search (0.1.1)
+      rails (>= 2.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -77,5 +83,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rails
+  adsense_for_search!
   rspec

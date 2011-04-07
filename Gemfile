@@ -1,4 +1,4 @@
 source 'http://rubygems.org'
 
-gem 'rails'
-gem 'rspec'
+# Specify your gem's dependencies in adsense_for_search.gemspec
+gemspec
