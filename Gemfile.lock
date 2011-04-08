@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    adsense_for_search (0.1.1)
+    adsense_for_search (0.2.0)
       rails (>= 2.3)
 
 GEM

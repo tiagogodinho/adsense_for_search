@@ -1,0 +1,24 @@
+default:
+  pageOptions:
+    pubId: 'pub-123456789'
+    channel: '123456789'
+  
+  adblock1:
+    container: 'adblock1'
+    number: 3
+    width: 'auto'
+    lines: 2
+    fontFamily: 'arial'
+    fontSizeTitle: '14px'
+    fontSizeDescription: '14px'
+    fontSizeDomainLink: '14px'
+  
+  adblock2:
+    container: 'adblock2'
+    number: 4
+    width: '250px'
+    lines: 3
+    fontFamily: 'arial'
+    fontSizeTitle: '12px'
+    fontSizeDescription: '12px'
+    fontSizeDomainLink: '12px'
