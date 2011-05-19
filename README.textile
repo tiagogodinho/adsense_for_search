@@ -1,0 +1,3 @@
+h1. Google AdSense for Search "!http://ci.tiagogodinho.com/tiagogodinho/adsense_for_search.png!":http://ci.tiagogodinho.com/tiagogodinho/adsense_for_search
+
+A simple gem to use "Google AdSense for Search"
