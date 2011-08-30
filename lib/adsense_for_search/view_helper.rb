@@ -26,7 +26,7 @@ module AdSenseForSearch
       js << "\n  new google.ads.search.Ads(#{variables.join(', ')});"
       
       output = <<-javascript
-<script type="text/javascript" charset="utf­8">
+<script type="text/javascript" charset="utf-8">
   #{js}
 </script>
       javascript
